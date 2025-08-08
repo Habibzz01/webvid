@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMOLED Uploader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cloud-upload-alt"></i> AMOLED Uploader</h1>
+            <p>Upload files & create custom shortlinks</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="upload"><i class="fas fa-file-upload"></i> Upload</button>
+            <button class="tab-button" data-tab="shortlink"><i class="fas fa-link"></i> Shortlink</button>
+        </div>
+
+        <div class="tab-content active" id="upload-tab">
+            <div class="upload-area" id="drop-area">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <p>Drag & drop files here or click to browse</p>
+                <input type="file" id="file-input" multiple>
+                <button class="btn" id="upload-btn"><i class="fas fa-upload"></i> Upload Files</button>
+            </div>
+            <div class="progress-container hidden">
+                <div class="progress-bar">
+                    <div class="progress" id="upload-progress"></div>
+                </div>
+                <span id="progress-text">0%</span>
+            </div>
+            <div class="result-container hidden" id="upload-result">
+                <h3><i class="fas fa-check-circle"></i> Upload Successful</h3>
+                <div class="result-box">
+                    <input type="text" id="file-url" readonly>
+                    <button class="btn copy-btn" data-target="file-url"><i class="fas fa-copy"></i> Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="shortlink-tab">
+            <div class="form-group">
+                <label for="original-url"><i class="fas fa-link"></i> Original URL</label>
+                <input type="url" id="original-url" placeholder="https://example.com">
+            </div>
+            <div class="form-group">
+                <label for="custom-name"><i class="fas fa-tag"></i> Custom Name (optional)</label>
+                <input type="text" id="custom-name" placeholder="my-link">
+                <div class="domain-hint">Your shortlink: https://yourdomain.com/<span id="name-preview">...</span></div>
+            </div>
+            <button class="btn" id="create-shortlink"><i class="fas fa-compress-alt"></i> Create Shortlink</button>
+            <div class="result-container hidden" id="shortlink-result">
+                <h3><i class="fas fa-check-circle"></i> Shortlink Created</h3>
+                <div class="result-box">
+                    <input type="text" id="shortlink-url" readonly>
+                    <button class="btn copy-btn" data-target="shortlink-url"><i class="fas fa-copy"></i> Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
